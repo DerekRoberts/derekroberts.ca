@@ -1,7 +1,7 @@
 ---
 title: Disable Stupid Blue Glow in KDE
 date: "2014-01-03T01:40"
-description: "Disable Stupid Blue Glow in KDE"
+description: "DEPRECATED: I can't stand KDE's default blue glow. Here's how to disable it. I'm using Oxygen for window decorations, but the procedure should be the same for everything else."
 ---
 
 ![Before](./KillGlow1.png)
