@@ -1,52 +1,59 @@
 ---
-title: Setting Up Ghost on OpenShift using Windows
-date: "2014-05-15T12:12"
-description: "DEPRECATED: Steps to install and configure Ghost CRM on OpenShift 2 from Windows 8, 7 or Vista."
+title: Setting Up Ghost on OpenShift using Ubuntu
+date: "2014-01-04T00:41"
+description: "DEPRECATED: Steps to install and configure Ghost CRM on OpenShift 2 from Ubuntu 14.04."
 ---
 
 ![OpenShiftLogo](./OpenShift-2.jpeg)
 
-Using Windows 7, assumed to work for Windows 8 and Vista.
-</br>Run all code from the command line (cmd)."
+Using Kubuntu 13.10 x64, revised for Ubuntu 14.04.
 </br>Insert your own values for `**CAPITALS**`.
 
 </br>
 ###Initial Setup###
 
-- Sign up with [OpenShift.com](http://openshift.com).
-- Install [Ruby](http://rubyinstaller.org/downloads/). Check "Add Ruby executables to your PATH."
-- Install [Git for Windows](http://msysgit.github.io/). Check "Use Git from the Windows Command Prompt."
-- Verify Ruby and Git have installed properly. Any non-error output is fine.
+- Sign up with [OpenShift.com](http://openshift.com)
 
-  <pre><code>ruby -e 'puts "Welcome to Ruby"'
-  git --version
+- Setup Ruby and Git by cmd, for Ubuntu/Kubuntu 14.04.
+
+  <pre><code>sudo apt-get install ruby-full git-core
   </code></pre>
 
-- Install RHC using RubyGem.
+- Setup Ruby and Git by cmd, for Ubuntu/Kubuntu 13.10 and earlier.
 
-  <pre><code>gem install rhc
+  <pre><code>sudo apt-get install ruby-full rubygems git-core
   </code></pre>
 
-- Setup RHC. Enter your OpenShift credentials and accept the defaults.
+- Verify Ruby and Git have installed properly.
 
-  <pre><code>rhc setup
-  </code></pre>
+<pre><code>ruby -e 'puts "Welcome to Ruby"'
+git --version
+</code></pre>
 
 - Set some git defaults.
-
   <pre><code>git config --global user.email "**EMAIL@ADDRESS.com**"
   git config --global user.name "**YOUR_NAME**"
   git config --global push.default simple
   </code></pre>
+- Use RubyGems to install RHC
+
+<pre><code>sudo gem install rhc
+</code></pre>
+
+- Setup RHC using the defaults and your judgement.
+
+<pre><code>rhc setup
+</code></pre>
 
 - Remember to update RHC from time to time
 
-  <pre><code>gem update rhc
-  </code></pre>
+<pre><code>gem update rhc
+</code></pre>
 
 - Create the Ghost application. Pick a meaningful name.
-  <pre><code>rhc app create **APP_NAME** nodejs-0.10 --env NODE_ENV=production --from-code https://github.com/openshift-quickstart/openshift-ghost-quickstart.git
-  </code></pre>
+
+<pre><code>rhc app create **APP_NAME** nodejs-0.10 --env NODE_ENV=production --from-code https://github.com/openshift-quickstart/openshift-ghost-quickstart.git
+</code></pre>
 
 </br>
 ###Troubleshooting the Setup###
@@ -136,7 +143,10 @@ http://www.derekroberts.ca/build/
 
 ---
 
-That's it!
+## That's it!
+
+- [BONUS] To make running multiple commands simpler I recommend adding aliases to .bashrc, hidden in your home directory.</br>
+  [Creating Aliases with .bashrc](http://www.derekroberts.ca/creating-aliases-with-bashrc/)
 
 ---
 

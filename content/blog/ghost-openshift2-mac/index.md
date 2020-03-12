@@ -1,42 +1,45 @@
 ---
-title: Setting Up Ghost on OpenShift using Windows
-date: "2014-05-15T12:12"
-description: "DEPRECATED: Steps to install and configure Ghost CRM on OpenShift 2 from Windows 8, 7 or Vista."
+title: Setting Up Ghost on OpenShift using Mac OS X
+date: "2014-01-12T16:10"
+description: "DEPRECATED: Steps to install and configure Ghost CRM on OpenShift 2 from OS X."
 ---
 
 ![OpenShiftLogo](./OpenShift-2.jpeg)
 
-Using Windows 7, assumed to work for Windows 8 and Vista.
-</br>Run all code from the command line (cmd)."
+Using OS X 10.9.1.
 </br>Insert your own values for `**CAPITALS**`.
 
 </br>
 ###Initial Setup###
 
 - Sign up with [OpenShift.com](http://openshift.com).
-- Install [Ruby](http://rubyinstaller.org/downloads/). Check "Add Ruby executables to your PATH."
-- Install [Git for Windows](http://msysgit.github.io/). Check "Use Git from the Windows Command Prompt."
-- Verify Ruby and Git have installed properly. Any non-error output is fine.
+- Install [Xcode](https://developer.apple.com/xcode/).
+- Install [Git for OS X](http://sourceforge.net/projects/git-osx-installer/).</br>
+- [Note] Press Ctrl+Click to open installers rejected by OS X 10.9 (Mavericks). This happens for anything outside their App Store and approved developer list. It can be disabled from System Preferences > Security & Privacy.
 
-  <pre><code>ruby -e 'puts "Welcome to Ruby"'
-  git --version
+- Install RHC using RubyGem using Terminal. There will be a prompt for admin access, then wait a minute.
+
+  <pre><code>sudo gem install rhc
   </code></pre>
 
-- Install RHC using RubyGem.
-
-  <pre><code>gem install rhc
-  </code></pre>
-
-- Setup RHC. Enter your OpenShift credentials and accept the defaults.
+- Setup RHC. Enter the OpenShift login from earlier, accept the defaults and pick a unique RHC namespace.
 
   <pre><code>rhc setup
   </code></pre>
+
+- Open Xcode, accept the terms of service, then quit. (Accepting from the terminal (w/ 'sudo git') failed for me, but YMMV.)
 
 - Set some git defaults.
 
   <pre><code>git config --global user.email "**EMAIL@ADDRESS.com**"
   git config --global user.name "**YOUR_NAME**"
   git config --global push.default simple
+  </code></pre>
+
+- Verify Ruby and Git have installed properly.
+
+  <pre><code>ruby -e 'puts "Welcome to Ruby"'
+  git --version
   </code></pre>
 
 - Remember to update RHC from time to time
@@ -137,6 +140,11 @@ http://www.derekroberts.ca/build/
 ---
 
 That's it!
+
+---
+
+- [BONUS] To make running multiple commands simpler I recommend adding aliases to .bashrc, hidden in your home directory.</br>
+  [Creating Aliases with .bashrc](http://www.derekroberts.ca/creating-aliases-with-bashrc/)
 
 ---
 
